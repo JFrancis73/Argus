@@ -112,8 +112,9 @@ def CreateList():
 		with open("/tmp/base.txt","w") as file:
 			for i in base_words:
 			    file.write(i+"\n")
-		input(login_url.get())
-		os.system("cewl --with-numbers -a "+login_url.get().strip()+" >> /tmp/base.txt")
+		#input(login_url.get())
+		if login_url.get().strip() != "":
+			os.system("cewl --with-numbers -a "+login_url.get().strip()+" >> /tmp/base.txt")
 		os.system("python cupp/cupp.py -q -w /tmp/base.txt")
 		os.system("python Wordlister/wordlister.py --cap --up --min 4 --max 16 --input cuppout.txt --output /tmp/templist.txt --perm 1")
 		#os.system("source .venv/bin/activate")
